@@ -41,4 +41,8 @@ class AuthController extends Controller
             //return back()->with('error',$th->getMessage());
         }
     }
+    function logout(){
+        session()->flush();
+        return redirect()->route('login');
+    }
 }

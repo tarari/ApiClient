@@ -13,14 +13,22 @@
         <h1>{{ env('APP_NAME') }}</h1>
     </header>
     <nav class=" flex bg-gray-300 p-4">
-        <a class="text-green-400 px-3" href="/">Home</a>
-        @auth
-        <a class="text-green-400 px-3" href="/logout">Logout</a>
-        @endauth
-        <a class="text-green-400 px-3" href="/login">login</a>
+        <x-nav-link href="/dashboard" :active="request()->routeIs('dashboard')">Dashboard</x-nav-link>
+        @if(session('token'))
+        <x-nav-link href="/logout" :active="request()->routeIs('logout')">Logout</x-nav-link>
+        @else
+        <x-nav-link href="/login">Login</x-nav-link>
+        @endif
     </nav>
         <main>
             {{ $slot }}
         </main>
+        <footer class="sticky bottom-0">
+
+                        @include('partials.errors')
+
+
+        </footer>
+
 </body>
 </html>

@@ -16,9 +16,8 @@ class Checksession
     public function handle(Request $request, Closure $next): Response
     {
         $token=session('token');
-        $user=$request->user();
         if(!$token){
-            return back()->with('error','Login error');
+            return back()->with('error','Login token error');
         }
         return $next($request);
     }

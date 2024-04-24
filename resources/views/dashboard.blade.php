@@ -1,10 +1,13 @@
 <x-layout>
-    <h1>News</h1>
+    <h1 class="text-3xl">News</h1>
     <div class="m-2 p-2 border border-indigo-300">
         @if(isset($data))
             @foreach ($data as $item)
-            <h2>{{$item['title']}}</h2>
-            <p>{{$item['body']}}</p>
+            <div class="m-2">
+                <h2>{{$item['title']}}</h2>
+                <p>{{$item['body']}}</p>
+            </div>
+
             @endforeach
         @else
         <p>No data</p>
